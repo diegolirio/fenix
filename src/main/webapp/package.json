@@ -1,6 +1,7 @@
 {
   "name": "Fenix",
   "dependencies": {
+    "angular": "^1.6.4",
     "materialize-css": "^0.98.1"
   }
 }

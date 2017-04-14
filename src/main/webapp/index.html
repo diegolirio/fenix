@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="fenix">
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Fenix</title>
@@ -19,10 +19,94 @@
     </div>
   </nav>
   
-  <div class="container">
-  		
+  <div class="container" ng-controller="OficinaController as oCtrl">
+  
+	<div class="row">
+	    <form class="col s12" ng-submit="oCtrl.save(oCtrl.oficina)">
+	      <div class="row">
+	        <div class="input-field col s8">
+	          <input placeholder="Nome" required="required" id="nome" type="text" class="validate" ng-model="oCtrl.oficina.nome">
+	          <!-- <label for="nome">Nome</label>  -->
+	        </div>
+	        <div class="input-field col s2">
+				<button class="btn waves-effect waves-light" type="submit" name="action">Save
+				    <!-- <i class="material-icons right">send</i> -->
+				</button>	        	
+	        </div>
+	      </div>
+	    </form>
+	  </div>
+	  
+	  <div class="row">
+		 <table class="bordered striped highlight responsive-table">
+		        <thead> 
+		          <tr>
+		          	  <th>ID</th>
+		              <th>Nome</th>
+		              <th>#</th>
+		          </tr>
+		        </thead>		
+		        <tbody>
+		          <tr ng-repeat="o in oCtrl.oficinas">
+		            <td>{{ o.id }}</td>
+		            <td>{{ o.nome }}</td>
+		            <td>
+		            	<a href ng-click="oCtrl.edit(o)">Edit</a> &nbsp;
+		            	<a href ng-click="oCtrl.del(o)">Delete</a>
+		            </td>
+		          </tr>
+		        </tbody>
+	      </table>	  
+	  
+	  </div>
+	    		
   </div>
   
+  <script type="text/javascript" src="./node_modules/angular/angular.min.js"></script>
+  <script type="text/javascript">
+  		var fenix = angular.module('fenix', []);
+  		fenix.controller('OficinaController', ['$http', function($http) {
+  		
+  			var self = this;
+  			
+  			self.init = function() {
+  				self.findAll();
+  			}
+  			
+  			self.findAll = function() {
+	  			$http.get('/oficina/findall').then(function(resp) {
+	  				self.oficinas = resp.data;
+	  			}, function(error) {
+	  				alert(error.data);
+	  			});
+  			}
+  			
+  			self.save = function(oficina) {
+  				$http.post('/oficina/save', oficina).then(function(resp) {
+  					self.oficina = {};
+  					self.findAll();
+  				}, function(error) {
+  					alert(error.data);
+  				});
+  			}
+  			
+  			self.edit = function(oficina) {
+  				self.oficina = oficina;
+  			}
+  			
+  			self.del = function(oficina) {
+  				$http.post('/oficina/delete/'+oficina.id).then(function(resp) {
+  					self.findAll();
+  				}, function(error) {
+  					alert(error.data);
+  				});  				
+  			} 
+  			
+  			self.init(); 
+  			
+  		}]);
+  		
+  </script>      
         
 </body>
 </html>
