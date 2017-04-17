@@ -13,7 +13,8 @@ Project Fenix
 
 ### Instalar MongoDB
 - Windows: 
-   - Baixe [mongodb](https://www.mongodb.org/dl/win32/x86_64-2008plus-ssl?_ga=1.135102456.861908304.1492025397) versão 3.0.14 ---> mongodb-win32-x86_64-2008plus-ssl-3.0.14.zip
+   - Baixe [mongodb](https://www.mongodb.org/dl/win32/x86_64-2008plus-ssl?_ga=1.135102456.861908304.1492025397) versão 3.4.2 ---> [mongodb-win32-x86_64-2008plus-ssl-3.4.2.zip](http://downloads.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.4.2.zip?_ga=1.133528071.861908304.1492025397)   
+   
 	
    - Descompact e adicione o %MONGO_HOME%/bin na variavel de ambiente PATH 	
    - No terminal rode o serviço mongodb   
