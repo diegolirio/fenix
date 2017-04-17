@@ -31,4 +31,8 @@ public class OficinaService {
 		this.oficinaRepository.delete(id);
 	}
 
+	public Oficina findOne(Long id) {
+		return this.oficinaRepository.findOne(id);
+	}
+
 }

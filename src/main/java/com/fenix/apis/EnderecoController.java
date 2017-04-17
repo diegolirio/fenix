@@ -9,35 +9,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fenix.entities.Oficina;
-import com.fenix.services.OficinaService;
+import com.fenix.entities.Endereco;
+import com.fenix.services.EnderecoService;
 
 @RestController
-@RequestMapping(value="/oficina")
-public class OficinaController {
+@RequestMapping(value="/endereco")
+public class EnderecoController {
 
 	@Autowired
-	private OficinaService oficinaService;
+	private EnderecoService enderecoService;
 	
 	@RequestMapping(value="/save", method=RequestMethod.POST)
-	public Oficina save(@RequestBody Oficina oficina) {
-		return this.oficinaService.save(oficina);
+	public Endereco save(@RequestBody Endereco endereco) {
+		System.out.println(endereco);
+		return this.enderecoService.save(endereco);
 	}
 
 	@RequestMapping(value="/findone/{id}")
-	public Oficina findOne(@PathVariable Long id) {
-		return this.oficinaService.findOne(id); 
+	public Endereco findOne(@PathVariable Long id) {
+		return this.enderecoService.findOne(id); 
+	}	
+
+	@RequestMapping(value="/findbyoficina/{oficinaId}")
+	public Endereco findByOficina(@PathVariable Long oficinaId) {
+		return this.enderecoService.findByOficinaId(oficinaId); 
 	}	
 	
 	@RequestMapping(value="/findall")
-	public List<Oficina> findAll() {
-		return this.oficinaService.findAll(); 
+	public List<Endereco> findAll() {
+		return this.enderecoService.findAll(); 
 	}
-	
 
 	@RequestMapping(value="/delete/{id}", method=RequestMethod.POST)
 	public void delete(@PathVariable Long id) {
-		this.oficinaService.delete(id); 
+		this.enderecoService.delete(id); 
 	}	
 	
 }
