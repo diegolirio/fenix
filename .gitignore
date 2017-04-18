@@ -25,5 +25,5 @@ nbdist/
 
 node_modules/
 dist/
-.apk
-.zip
+*.apk
+*.zip
