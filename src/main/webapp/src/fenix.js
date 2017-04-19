@@ -2,6 +2,8 @@
  * 
  */
 var fenix = angular.module('fenix', ['ngRoute']);  
+
+var SERVER_APP = '/fenix';
   
 fenix.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   	  $locationProvider.hashPrefix('');

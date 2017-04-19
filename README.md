@@ -11,7 +11,7 @@ Project Fenix
   - Node
   - Material-Designer
 
-### Instalar MongoDB
+## Instalar MongoDB
 - Windows: 
    - Baixe [mongodb](https://www.mongodb.org/dl/win32/x86_64-2008plus-ssl?_ga=1.135102456.861908304.1492025397) versão 3.4.2 ---> [mongodb-win32-x86_64-2008plus-ssl-3.4.2.zip](http://downloads.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.4.2.zip?_ga=1.133528071.861908304.1492025397)   
    
@@ -37,6 +37,37 @@ Project Fenix
   ```   
    apt-get install mondodb
   ```
+ 	
+### Habilitar controller de acesso no MongoDB
+
+- Iniciar serviço Mongo sem o controle de acesso
+```sh
+mongod --port 27017 
+```
+
+- Conectar ao Mongo
+```
+mongo --port 27017
+```
+
+- Criar usuario 
+```
+use fenix
+db.createUser({ user: "fenix", pwd: "fenix", roles: [ { role: "readWrite", db: "fenix" } ] })
+```
+
+- Reinicie serviço Mongo com o controle de acesso
+```sh
+mongod --port 27017 --auth 
+```
+
+- Autenticar como usuario fenix
+```sh
+mongo --port 27017 -u "fenix" -p "fenix" --authenticationDatabase "fenix"
+```
+
+[Documentação MongoDB](https://docs.mongodb.com/v3.0/tutorial/enable-authentication/)
+
  	
 	
 	

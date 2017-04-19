@@ -7,7 +7,7 @@
 
     <author href="http://fenix.org" email="fenix@fenix.com">Fenix</author>
 
-	<icon src="img/fenix-logo.png" />
+	<icon src="img/fenix_only_logo.png" />
 	<gap:splash src="img/fenix-logo.png" />
 	
 	<preference name="orientation" value="portrait" />
