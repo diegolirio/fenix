@@ -53,6 +53,7 @@ mongo --port 27017
 - Criar usuario 
 ```
 use fenix
+db.removeUser(fenix)
 db.createUser({ user: "fenix", pwd: "fenix", roles: [ { role: "readWrite", db: "fenix" } ] })
 ```
 
